@@ -7,11 +7,14 @@
 5. Poprawnego zamykania wątków (np. po pewnym czasie lub w reakcji na przycisk).
 
 ## Kompilacja
-
+```
 g++ -std=c++0x -pthread main.cpp Philosopher.hpp Philosopher.cpp
+```
 
 ## Uruchmienie
 
+```
 ./a.out
-./a.out 4 (4 to liczba watkow/filozofow)
 
+./a.out 4 (4 to liczba watkow/filozofow)
+```
