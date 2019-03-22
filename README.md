@@ -1,5 +1,7 @@
 # Systemy Operacyjne - Projekt 1
 
+## OCENA 4.25
+
 1. Etap polega na utworzeniu pierwszej części aplikacji wielowątkowej ukazującej problem ucztujących filozofów.
 2. Aplikacja powinna tworzyć wątki filozofów (co najmniej 5).
 3. Aplikacja powinna symulować życie każdego filozofa (co najmniej cykle filofowanie–posiłek) poprzez wypisywanie odpowiednich komunikatów. Czas filozofowania i jedzenia powinien wynosić co najmniej 2–3 sekundy. Dobrze jeśli czas ten będzie lekko losowo (np. od 2.5 do 3.5 sekund, a nie od 1 do 5 sekund).

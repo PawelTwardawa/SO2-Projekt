@@ -17,6 +17,7 @@ class Philosopher
         std::stringstream thing(float time);
         std::stringstream changeColor(int code);
         std::stringstream pickUp(std::string val);
+        std::stringstream print(std::string val);
         
 
     public:

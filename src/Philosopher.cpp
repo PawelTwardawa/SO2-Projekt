@@ -35,6 +35,13 @@ std::stringstream Philosopher::pickUp(std::string val)
     return ss;
 }
 
+std::stringstream Philosopher::print(std::string value)
+{
+    std::stringstream ss;
+    ss << changeColor(31 + id).str() << "Philosopher " << id << " " << value << " working" << std::endl;
+    return ss;
+}
+
 int Philosopher::randInt()
 {
     std::mt19937 rd{ std::random_device{}()};
@@ -44,7 +51,8 @@ int Philosopher::randInt()
 
 void Philosopher::Do()
 {
-    std::cout  << "Philosopher" << id << " start working" << std::endl;
+    //std::cout  << "Philosopher" << id << " start working" << std::endl;
+    std::cout << print("start").str();
 
     long waitTime;
 
@@ -62,5 +70,6 @@ void Philosopher::Do()
         std::this_thread::sleep_for(std::chrono::milliseconds(waitTime));  
     }
 
-    std::cout << "Philosopher: " << id << " stop working" << std::endl;
+    //std::cout << "Philosopher: " << id << " stop working" << std::endl;
+    std::cout << print("stop").str();
 }
