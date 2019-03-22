@@ -17,7 +17,7 @@ std::stringstream Philosopher::changeColor(int code)
 std::stringstream Philosopher::eat(float time)
 {
     std::stringstream ss;
-    ss << changeColor(31 + id).str() << "Philosopher " << id << " will eat for " << time << " seconds" << std::endl;
+    ss << changeColor(31 + id).str() << "Philosopher " << id << " will eat for " << time << " seconds" << " and put down forks" << std::endl;
     return ss;
 }
 
@@ -28,9 +28,15 @@ std::stringstream Philosopher::thing(float time)
     return ss;
 }
 
+std::stringstream Philosopher::pickUp(std::string val)
+{
+    std::stringstream ss;
+    ss << changeColor(31 + id).str() << "Philosopher " << id << " pick up " << val << " fork" << std::endl;
+    return ss;
+}
+
 int Philosopher::randInt()
 {
-    //std::random_device rd;
     std::mt19937 rd{ std::random_device{}()};
     std::uniform_int_distribution<int> distribution(2500,3500);
     return distribution(rd);
@@ -38,16 +44,15 @@ int Philosopher::randInt()
 
 void Philosopher::Do()
 {
-    //work = true;
-
     std::cout  << "Philosopher" << id << " start working" << std::endl;
 
     long waitTime;
 
-    //while(work)
     for(int i = 0; i < 10; i++)
     {
         waitTime = randInt();
+        std::cout << pickUp("left").str();
+        std::cout << pickUp("right").str();
         std::cout << eat((float)waitTime/1000).str();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(waitTime));
@@ -59,8 +64,3 @@ void Philosopher::Do()
 
     std::cout << "Philosopher: " << id << " stop working" << std::endl;
 }
-
-// void Philosopher::StopDoing()
-// {
-//     work = false;
-// }

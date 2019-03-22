@@ -10,17 +10,16 @@ class Philosopher
 {
     private: 
         int id;
-        //bool work;
 
         int randInt();
 
         std::stringstream eat(float time);
         std::stringstream thing(float time);
         std::stringstream changeColor(int code);
+        std::stringstream pickUp(std::string val);
+        
 
     public:
         Philosopher(int id);
-        void Do();
-        //void StopDoing();
-        
+        void Do();        
 };
