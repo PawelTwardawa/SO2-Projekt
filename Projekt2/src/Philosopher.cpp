@@ -35,6 +35,10 @@ void Philosopher::think()
             return;
         }
 
+        double p = (double)i /(double)part;
+
+        progress = std::round(p * 100);
+
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 };
@@ -45,6 +49,10 @@ void Philosopher::eat()
     std::lock_guard<std::mutex> left_lock(leftFork.mtx, std::adopt_lock);
     std::lock_guard<std::mutex> right_lock(rightFork.mtx, std::adopt_lock);
 
+    // std::lock(leftFork.mtx, rightFork.mtx);
+    // std::lock_guard<std::mutex> left_lock(leftFork.mtx, std::adopt_lock);
+    // std::lock_guard<std::mutex> right_lock(rightFork.mtx, std::adopt_lock);
+
     state = 1;
     int part = std::uniform_int_distribution<int>(15, 20)(rng);
     for(auto i = 1; i < part; i++)
@@ -53,6 +61,10 @@ void Philosopher::eat()
         {
             return;
         }
+
+        double p = (double)i /(double)part;
+
+        progress = std::round(p * 100);
 
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }

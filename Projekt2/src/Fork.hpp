@@ -1,16 +1,21 @@
 #pragma once
 #include <mutex>
 
-struct Fork
+// struct Fork
+// {
+//     std::mutex mtx;
+// };
+
+
+class Fork
 {
-    std::mutex mtx;
+    public: 
+        std::mutex mtx;
+
+        //Fork();
 };
 
-
-// class Fork
+// Fork::Fork()
 // {
-//     public: 
-//         static std::mutex mutex;
 
-//         Fork();
 // };
