@@ -17,7 +17,7 @@ Ui::Ui(std::vector<Philosopher *> p)
     init_pair(3, COLOR_RED, -1);
     getmaxyx(stdscr, col, row);
     x = row/2 -max_len;
-    y = col /2;
+    y = col/2;
 };
 
 Ui::~Ui()
@@ -43,17 +43,17 @@ void Ui::update()
         {
             //int id = p->id;
             //int state = p->state;
-            move(y + p->id -2, 0);
+            move(y + p->id -6, 0);
             clrtoeol();
             attron(COLOR_PAIR(p->state + 1));
             if(p->state == 2)
             {
-                mvprintw(y + p->id -2, x, "Philosopher %d is %s", p->id, states[p->state]);
+                mvprintw(y + p->id -6, x, "Philosopher %d is %s", p->id, states[p->state]);
             }
             else
             {
-                mvprintw(y + p->id- 2, x,"Philosopher %d is %s ", p->id, states[p->state]);
-                mvprintw(y + p->id- 2, x + 40 ," progress: %d %", p->progress);
+                mvprintw(y + p->id- 6, x,"Philosopher %d is %s ", p->id, states[p->state]);
+                mvprintw(y + p->id- 6, x + 40 ," progress: %d %", p->progress);
                 clrtoeol();
             }
             refresh();
