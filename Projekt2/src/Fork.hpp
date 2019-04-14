@@ -1,21 +1,11 @@
 #pragma once
 #include <mutex>
-
-// struct Fork
-// {
-//     std::mutex mtx;
-// };
-
+#include <condition_variable>
 
 class Fork
 {
     public: 
         std::mutex mtx;
-
-        //Fork();
+        std::condition_variable ready_cv;
+        int last_id = -1;
 };
-
-// Fork::Fork()
-// {
-
-// };

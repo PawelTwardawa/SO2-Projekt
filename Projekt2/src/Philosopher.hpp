@@ -7,6 +7,13 @@
 //#include "Fork.hpp"
 #include "Table.hpp"
 
+enum class PhilosopherAction
+{
+    Thinking = 1,
+    Eating = 2,
+    waitingForForks = 3   
+};
+
 class Philosopher
 {
     public:
@@ -16,7 +23,7 @@ class Philosopher
         Fork &rightFork;
         std::thread t;
         std::mt19937 rng{std::random_device{}()};
-        int state = -1;
+        PhilosopherAction action;
         int progress = 0;
 
         std::mutex mutex;

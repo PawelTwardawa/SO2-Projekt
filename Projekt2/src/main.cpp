@@ -27,24 +27,18 @@ int main(int argc, char **argv)
         count = std::stoi(str);
     }
 
-
     Table *table = new Table(count);
-    //table->forks.resize(5);
     Table table2;
 
     std::cout<<table->forks.size();
-    //Ui *ui = new Ui();
 
     for(auto i = 0; i < count- 1; i++)
     {
         Philosopher *p = new Philosopher(i + 1, table2, *table->forks[i], *table->forks[i + 1] );
         philosophers.push_back(p);
-
     }
 
     philosophers.push_back(new Philosopher(count, table2, *table->forks[count -1], *table->forks[0]));
-
-    table->ready = true;
 
     std::thread tu(&Ui::update, new Ui(philosophers));
 

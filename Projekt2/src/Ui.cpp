@@ -2,7 +2,6 @@
 #include "Ui.hpp"
 
 Ui::Ui(std::vector<Philosopher *> p)
-//Ui::Ui()
 {
     philosophers = p;
     initscr();
@@ -15,15 +14,14 @@ Ui::Ui(std::vector<Philosopher *> p)
     init_pair(1, COLOR_MAGENTA, -1);
     init_pair(2, COLOR_GREEN, -1);
     init_pair(3, COLOR_RED, -1);
-    getmaxyx(stdscr, col, row);
-    x = row/2 -max_len;
-    y = col/2;
-};
+    x = 0;
+    y = 0;
+}
 
 Ui::~Ui()
 {
     endwin();
-};
+}
 
 void Ui::update()
 {
@@ -41,23 +39,21 @@ void Ui::update()
 
         for(auto p : philosophers)
         {
-            //int id = p->id;
-            //int state = p->state;
-            move(y + p->id -6, 0);
+            move(y + p->id, 0);
             clrtoeol();
-            attron(COLOR_PAIR(p->state + 1));
-            if(p->state == 2)
+            attron(COLOR_PAIR((int)p->action));
+            if(p->action == PhilosopherAction::waitingForForks)
             {
-                mvprintw(y + p->id -6, x, "Philosopher %d is %s", p->id, states[p->state]);
+                mvprintw(y + p->id, x, "Philosopher %d is %s", p->id, actions[p->action]);
             }
             else
             {
-                mvprintw(y + p->id- 6, x,"Philosopher %d is %s ", p->id, states[p->state]);
-                mvprintw(y + p->id- 6, x + 40 ," progress: %d %", p->progress);
+                mvprintw(y + p->id, x,"Philosopher %d is %s ", p->id, actions[p->action]);
+                mvprintw(y + p->id, x + 40 ," progress: %d %", p->progress);
                 clrtoeol();
             }
             refresh();
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
-};
+}
